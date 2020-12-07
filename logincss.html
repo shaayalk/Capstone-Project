@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">         
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>      
+    nav ul li a{
+    color: white;
+    }    
+     </style>
+</head>
+<body class="white">
+   
+<!-- NAVBAR -->
+<nav class="white-text">
+    <div class="nav-wrapper container, card panel indigo darken 4">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="logged-in" style="display: none;">
+                <a href="#" class="grey-text modal-trigger" data-target="modal-question">Submit Question</a>
+            </li>
+            <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text" id="logout">Logout</a>
+            </li>
+            <li class="logged-out" style="display: none;">
+                <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+            </li>
+            <li class="logged-out" style="display: none;">
+                <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- SIGN UP MODAL -->
+<div id="modal-signup" class="modal">
+    <div class="modal-content">
+        <h4>Sign up</h4><br />
+        <form id="signup-form">
+            <div class="input-field">
+                <input type="email" id="signup-email" required />
+                <label for="signup-email">Email address</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="signup-password" required />
+                <label for="signup-password">Choose password</label>
+            </div>
+            <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+        </form>
+    </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="modal-login" class="modal">
+    <div class="modal-content">
+        <h4>Login</h4><br />
+        <form id="login-form">
+            <div class="input-field">
+                <input type="email" id="login-email" required />
+                <label for="login-email">Email address</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="login-password" required />
+                <label for="login-password">Your password</label>
+            </div>
+
+            <button class="btn yellow darken-2 z-depth-0" onclick="homePage()">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- Submit Questions MODAL -->
+<div id="modal-question" class="modal">
+    <div class="modal-content">
+
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Submit Questions</h2>
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto mb-5">Just interviewed? Submit a question to the repository!</p>
+
+        <form id="create-form">
+            <div class="input-field">
+                <input type="text" id="name" required>
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field">
+                <textarea id="dateofInterview" class="materialize-textarea" required></textarea>
+                <label for="dateofInterview">Date of Interview</label>
+            </div>
+            <div class="input-field">
+                <textarea id="subject" class="materialize-textarea" required></textarea>
+                <label for="subject">Subject</label>
+            </div>
+            <div class="input-field">
+                <textarea id="company" class="materialize-textarea" required></textarea>
+                <label for="company">Company</label>
+            </div>
+            <div class="input-field">
+                <textarea id="question" class="materialize-textarea" required></textarea>
+                <label for="question">Question</label>
+            </div>
+            <button onclick="message()" class="btn yellow darken-2 z-depth-0">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Question list -->
+<div class="container" style="margin-top: 40px;">
+    <ul id="question-list">
+
+    </ul>
+</div>
+
+<!-- The core FirebaseAuth JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+<script>
+    // Your web app's FirebaseAuth configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAsugurShuLWXYVNT-ayYexm7Hj4DJa8-E",
+        authDomain: "capstone-f1901.firebaseapp.com",
+        databaseURL: "https://capstone-f1901.firebaseio.com",
+        projectId: "capstone-f1901",
+        storageBucket: "capstone-f1901.appspot.com",
+        messagingSenderId: "749466240775",
+        appId: "1:749466240775:web:5484fec82a4cdddd0d67a2",
+        measurementId: "G-GF71XXDG3D"
+    };
+    // Initialize FirebaseAuth
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    //const analytics = firebase.analytics();
+
+</script>
+
+<!-- Compiled and minified JavaScript -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+<script src="auth.js"></script>
+<script src="js.js"></script>
+<!-- <script src="index.js"></script> -->
+
+</body>
+</html>
